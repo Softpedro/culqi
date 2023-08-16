@@ -1,8 +1,26 @@
 <script setup lang="ts">
-import IconDelete from './icons/IconDelete.vue';
-import IconEdit from './icons/IconEdit.vue';
-import IconView from './icons/IconView.vue';
+import { onMounted, ref } from 'vue';
+import axios from 'axios';
+import ItemTable from './ItemTable.vue';
 
+onMounted(() => {
+  getEmployees()
+});
+
+const getEmployees = async () => {
+  try {
+    const response = await axios.get('https://fepruebatecnicaculqi-backend-production.up.railway.app/empleados?limit=10&page=1', {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("accessToken")}`
+      }
+    });
+    console.log(response.data.data, 'response.data.data.responseData')
+    employees.value = response.data.data; 
+  } catch (error) {
+    console.error(error);
+  }
+}
+const employees = ref([]);
 </script>
 
 <template>
@@ -30,39 +48,7 @@ import IconView from './icons/IconView.vue';
           </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td class="px-4 py-4">
-            <p class="pl-4text-blue text-xs">Pristia Candra</p>
-            <span class="text-[10px]">Lincoln@unpixel.com</span>
-          </td>
-          <td class="px-4 py-4">
-            <p class="pl-4text-blue text-xs">UI UX Dseigner</p>
-          </td>
-          <td class="px-4 py-4">
-            <p class="pl-4text-blue text-xs">Team Product</p>
-          </td>
-          <td class="px-4 py-4">
-            <p class="pl-4text-blue text-xs">Unpixel Office</p>
-          </td>
-          <td class="px-4 py-4">
-            <p class="pl-4text-blue text-xs">Activa</p>
-          </td>
-          <td class="px-4 py-4">
-            <div class="flex">
-              <button class="button-action bg-view">
-                <IconView class="w-4"/>
-              </button>
-              <button class="button-action bg-edit mx-[10px]">
-                <IconEdit class="w-4"/>
-              </button>
-              <button class="button-action bg-delete">
-                <IconDelete class="w-4"/>
-              </button>
-            </div>
-          </td>
-        </tr>
-      </tbody>
+      <ItemTable :employees="employees" />
     </table>
   </div>
 </template>
@@ -70,8 +56,5 @@ import IconView from './icons/IconView.vue';
 <style scoped>
 .form-th{
   @apply px-4 py-4 bg-graylight text-left text-subtitle font-normal text-xs;
-}
-.button-action {
-  @apply w-8 h-8 flex items-center justify-center rounded-[10px]
 }
 </style>

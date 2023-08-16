@@ -12,12 +12,12 @@ import logo from '@/assets/images/logo_white.svg'
         class="h-full object-cover object-center w-full absolute inset-0"
       />
     </figure>
-    <div class="bg-blue pb-[80px] px-12 pt-12">
+    <div class="bg-blue pb-[80px] px-12 pt-12 border-t-[5px] border-solid border-green">
       <figure>
         <img :src="logo" :alt="logo">
       </figure>
-      <h2 class="text-white text-5xl my-6 leading-normal">Dale más power ⚡ a tus empleados hoy 💪</h2>
-      <p class="text-white text-lg">Te ayudamos a gestionarlos de manera más sencilla</p>
+      <h2 class="text-white text-5xl my-6 leading-tight font-bold">Dale más power ⚡ a tus empleados hoy 💪</h2>
+      <p class="text-white">Te ayudamos a gestionarlos de manera más sencilla</p>
     </div>
   </div>
 </template>

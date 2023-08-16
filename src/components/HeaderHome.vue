@@ -14,8 +14,8 @@
 </script>
 <template>
   <header class="w-[280px] flex flex-col px-6 py-6 border-r border-input h-screen">
-    <figure class="mb-8">
-      <img :src="logo" alt="">
+    <figure class="mb-8 flex justify-center">
+      <img :src="logo" :alt="logo" :title="logo">
     </figure>
     <nav>
       <ul>
@@ -34,7 +34,7 @@
       </ul>
     </nav>
     <button
-      class="mt-auto py-3 border-solid rounded-lg border-2 border-blue"
+      class="mt-auto py-3 border-solid rounded-lg border-2 border-blue hover:bg-blue hover:text-white"
       :onclick="logout"
     >
       Salir

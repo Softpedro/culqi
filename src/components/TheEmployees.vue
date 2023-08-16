@@ -7,11 +7,11 @@ import EmployeesTable from './EmployeesTable.vue';
 </script>
 
 <template>
-  <div class="px-6 py-6">
+  <section class="px-6 py-6">
     <div class="bg-white px-6 py-6">
       <EmployeesButtons />
       <EmployeesFilter />
       <EmployeesTable /> 
     </div>
-  </div>
+  </section>
 </template>

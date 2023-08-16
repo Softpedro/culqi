@@ -4,7 +4,7 @@ import logo from '@/assets/images/logo_white.svg'
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
+  <section class="flex flex-col h-screen">
     <figure class="flex-1 relative">
       <img 
         :src="banner"

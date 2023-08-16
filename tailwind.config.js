@@ -7,7 +7,8 @@ module.exports = {
         'white': '#ffffff',
         'green': '#27A376',
         'lightblue': '#A0AEC0',
-        'subtitle': '#687588'
+        'subtitle': '#687588',
+        'error': '#E03137'
       },
       borderColor: {
         'input': '#E9EAEC ',

@@ -3,11 +3,13 @@
   import { useAuthStore } from '@/stores/store';
   import { useRouter } from 'vue-router';
   import axios from 'axios';
+  import IconError from './icons/IconError.vue';
 
   const authStore = useAuthStore();
   const router = useRouter();
   const correo = ref<string>('');
   const password = ref<string>('');
+  let validation = ref<boolean>(false)
 
   const login = async () => {
     try {
@@ -15,17 +17,17 @@
         correo: correo.value,
         password: password.value,
       });
-      console.log(response.data.data.token, 'response.data.data.token')
       authStore.setAccessToken(response.data.data.token);
       router.push('/about');
     } catch (error) {
       console.error(error);
+      validation.value = true
     }
   };
 </script>
 
 <template>
-  <div class="flex flex-col w-full justify-center items-center">
+  <section class="flex flex-col w-full justify-center items-center">
     <div class="max-w-[480px] w-full">
       <h4 class="text-2xl mb-8 text-center font-bold">Inicia sesión</h4>
       <form action="" class="mb-8" @submit.prevent="login">
@@ -48,12 +50,16 @@
             <span>*</span>
           </label>
           <input
-            type="text"
+            type="password"
             placeholder="Ingresa la contraseña"
             class="form-input"
             id="lbl_password"
             v-model="password"
           >
+        </div>
+        <div class="flex mb-8" v-if="validation">
+          <IconError />
+          <span class="text-[12px] text-error ml-1 block">Correo o contraseña incorrectos</span>
         </div>
         <button type="submit" class="form-button">Iniciar sesión</button>
       </form>
@@ -66,7 +72,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style scoped>

@@ -19,5 +19,5 @@ import logo from '@/assets/images/logo_white.svg'
       <h2 class="text-white text-5xl my-6 leading-tight font-bold">Dale más power ⚡ a tus empleados hoy 💪</h2>
       <p class="text-white">Te ayudamos a gestionarlos de manera más sencilla</p>
     </div>
-  </div>
+  </section>
 </template>
